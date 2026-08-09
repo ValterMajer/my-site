@@ -3,772 +3,210 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Мой мир</title>
-
+<title>MY WORLD — Личный мир</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:wght@400;600&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    background:#05090b;color:#d9cfbd;
+    font-family:"Crimson Text",serif;
+    line-height:1.6;
 }
-
-html {
-    scroll-behavior: smooth;
+body:before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:20;
+    background:radial-gradient(circle at center,transparent 45%,rgba(0,0,0,.45) 100%);
 }
-
-body {
-    background: #080b0d;
-    color: #e8dfcf;
-    font-family: "Crimson Text", serif;
+header{
+    position:fixed;top:0;left:0;width:100%;height:82px;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 3%;background:rgba(3,7,9,.88);
+    border-bottom:1px solid #5e4528;backdrop-filter:blur(10px);
 }
-
-/* ================= HEADER ================= */
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 82px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 5%;
-
-    background: rgba(5, 8, 10, 0.92);
-    border-bottom: 1px solid #6d522b;
-
-    z-index: 1000;
-    backdrop-filter: blur(10px);
+.logo{display:flex;align-items:center;gap:14px;color:#d2ad70}
+.logo-mark{
+    width:58px;height:68px;border:1px solid #866337;
+    clip-path:polygon(50% 0,92% 15%,88% 75%,50% 100%,12% 75%,8% 15%);
+    display:flex;align-items:center;justify-content:center;font-size:30px;
+    background:rgba(10,10,8,.65);
 }
-
-.logo {
-    font-family: "Cinzel", serif;
-    font-size: 25px;
-    color: #c9a15b;
-    letter-spacing: 2px;
+.logo-title{font:600 25px Cinzel,serif;letter-spacing:2px}
+.logo-sub{font-size:12px;color:#82786a}
+nav{display:flex;gap:25px;align-items:center}
+nav a{
+    color:#b9ad9a;text-decoration:none;font:12px Cinzel,serif;
+    letter-spacing:.3px;transition:.25s;white-space:nowrap
 }
-
-.logo span {
-    display: block;
-    font-family: "Crimson Text", serif;
-    font-size: 13px;
-    color: #8d8475;
-    letter-spacing: 1px;
-}
-
-nav {
-    display: flex;
-    gap: 28px;
-}
-
-nav a {
-    color: #c8c0b2;
-    text-decoration: none;
-    font-family: "Cinzel", serif;
-    font-size: 12px;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: #d8aa5c;
-}
-
-/* ================= HERO ================= */
-
-.hero {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    position: relative;
-    overflow: hidden;
-
+nav a:hover,nav a.active{color:#d5a85e}
+.hero{
+    min-height:720px;height:100vh;max-height:900px;
+    position:relative;display:flex;align-items:center;justify-content:center;
+    overflow:hidden;text-align:center;
     background:
-        radial-gradient(
-            ellipse at 70% 45%,
-            rgba(117, 91, 45, 0.30),
-            transparent 30%
-        ),
-        radial-gradient(
-            ellipse at 30% 80%,
-            rgba(20, 45, 52, 0.45),
-            transparent 45%
-        ),
-        linear-gradient(
-            135deg,
-            #081013 0%,
-            #11191c 50%,
-            #080a0c 100%
-        );
+      linear-gradient(to bottom,rgba(2,6,8,.25),rgba(2,6,8,.18) 55%,#05090b 100%),
+      url("images/hero.png") center top/cover no-repeat;
 }
-
-/* Туман */
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
+.hero:after{
+    content:"";position:absolute;inset:0;pointer-events:none;
     background:
-        radial-gradient(
-            ellipse at 20% 60%,
-            rgba(160, 160, 150, 0.08),
-            transparent 35%
-        ),
-        radial-gradient(
-            ellipse at 80% 40%,
-            rgba(160, 160, 150, 0.07),
-            transparent 35%
-        );
+      radial-gradient(ellipse at 50% 42%,transparent 20%,rgba(0,0,0,.28) 75%),
+      linear-gradient(to top,rgba(0,0,0,.55),transparent 28%);
 }
-
-.hero-content {
-    position: relative;
-    max-width: 850px;
-    padding: 120px 20px 50px;
+.hero-content{position:relative;z-index:2;max-width:760px;padding:110px 20px 50px;text-shadow:0 3px 14px #000}
+.kicker{font:18px Cinzel,serif;color:#cda86a;letter-spacing:4px}
+h1{font:500 clamp(52px,7vw,92px) Cinzel,serif;letter-spacing:5px;color:#e5d8c1;line-height:1.05;margin:12px 0}
+.divider{width:210px;height:1px;background:#a5793e;margin:22px auto;box-shadow:0 0 15px rgba(192,139,66,.35)}
+.hero p{font-size:19px;color:#c1b8a9;max-width:650px;margin:auto}
+.button{
+    display:inline-block;margin-top:30px;padding:13px 31px;
+    color:#d2ad70;border:1px solid #886437;text-decoration:none;
+    font:13px Cinzel,serif;background:rgba(4,7,8,.48);transition:.3s
 }
-
-.small-title {
-    font-family: "Cinzel", serif;
-    color: #c4a56c;
-    font-size: 20px;
-    letter-spacing: 5px;
-    margin-bottom: 15px;
+.button:hover{background:#8c6839;color:#080b0c;box-shadow:0 0 28px rgba(190,137,59,.3)}
+section{padding:75px 3%;position:relative}
+.section-title{text-align:center;margin-bottom:35px}
+.section-title h2{font:500 29px Cinzel,serif;letter-spacing:4px;color:#c6a16b}
+.section-title p{color:#847b6e;margin-top:5px}
+.cards{
+    max-width:1200px;margin:auto;display:grid;
+    grid-template-columns:repeat(6,1fr);gap:9px
 }
-
-.hero h1 {
-    font-family: "Cinzel", serif;
-    font-size: clamp(55px, 9vw, 105px);
-    font-weight: 500;
-    letter-spacing: 6px;
-
-    color: #eee5d4;
-
-    text-shadow:
-        0 3px 20px rgba(0,0,0,0.8);
+.card{
+    min-height:260px;padding:25px 15px;text-align:center;
+    background:linear-gradient(145deg,rgba(19,23,23,.94),rgba(5,9,10,.96));
+    border:1px solid #4c3922;position:relative;transition:.3s
 }
-
-.divider {
-    width: 220px;
-    height: 1px;
-    background: #b38a4b;
-    margin: 28px auto;
+.card:hover{transform:translateY(-5px);border-color:#9b713b}
+.icon{font-size:43px;color:#c3924d;margin-bottom:14px}
+.card h3{font:16px Cinzel,serif;color:#d0ad73;letter-spacing:1px}
+.card p{font-size:15px;color:#a49b8d;margin:14px 0;line-height:1.5}
+.card a{color:#b98845;text-decoration:none;font-size:14px}
+.about{
+    max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1.3fr;
+    border:1px solid #493721;background:#0a1012;overflow:hidden
 }
-
-.hero p {
-    max-width: 650px;
-    margin: auto;
-
-    font-size: 20px;
-    line-height: 1.7;
-
-    color: #bdb5a8;
+.about-image{
+    min-height:360px;
+    background:url("images/hero.png") left bottom/cover no-repeat;
+    filter:brightness(.62) saturate(.75)
 }
-
-.button {
-    display: inline-block;
-
-    margin-top: 35px;
-    padding: 14px 35px;
-
-    color: #d8bd89;
-    border: 1px solid #927043;
-
-    text-decoration: none;
-    font-family: "Cinzel", serif;
-    font-size: 13px;
-
-    transition: 0.3s;
+.about-text{padding:55px 50px}
+.about-text h2{font:500 30px Cinzel,serif;color:#c7a26c;margin-bottom:20px}
+.about-text p{color:#aaa092;font-size:18px;max-width:650px}
+.projects{
+    max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px
 }
-
-.button:hover {
-    background: #9b733b;
-    color: #090b0c;
-    box-shadow: 0 0 30px rgba(174, 128, 59, 0.25);
+.project{
+    min-height:250px;border:1px solid #4b3822;position:relative;overflow:hidden;
+    background:#0a0f11
 }
-
-/* ================= SECTIONS ================= */
-
-section {
-    padding: 100px 6%;
+.project:nth-child(1){background:linear-gradient(transparent 35%,rgba(0,0,0,.9)),url("images/hero.png") center/cover}
+.project:nth-child(2){background:linear-gradient(transparent 35%,rgba(0,0,0,.9)),url("images/hero.png") 75% 70%/cover}
+.project:nth-child(3){background:linear-gradient(transparent 35%,rgba(0,0,0,.9)),url("images/hero.png") 90% 40%/cover}
+.project-content{position:absolute;bottom:0;padding:25px;width:100%}
+.project small{color:#b98746;font:12px Cinzel,serif}
+.project h3{color:#ddd0b9;font:18px Cinzel,serif;margin-top:5px}
+footer{
+    border-top:1px solid #3c2e1d;padding:35px 3%;display:flex;
+    justify-content:space-between;align-items:center;color:#6f685e;
+    background:#030607
 }
-
-.section-title {
-    text-align: center;
-    margin-bottom: 55px;
+footer strong{color:#9d7742;font-family:Cinzel,serif}
+@media(max-width:1000px){
+    nav{gap:12px}.logo-title{font-size:20px}
+    .cards{grid-template-columns:repeat(3,1fr)}
 }
-
-.section-title h2 {
-    font-family: "Cinzel", serif;
-    font-size: 32px;
-    font-weight: 500;
-    color: #c9a15b;
-    letter-spacing: 3px;
-}
-
-.section-title p {
-    margin-top: 10px;
-    color: #817b71;
-}
-
-/* ================= CATEGORIES ================= */
-
-.categories {
-    display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(190px, 1fr));
-
-    max-width: 1200px;
-    margin: auto;
-
-    border: 1px solid #342a1d;
-}
-
-.category {
-    min-height: 250px;
-
-    padding: 35px 25px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            145deg,
-            #111719,
-            #090d0f
-        );
-
-    border-right: 1px solid #342a1d;
-
-    transition: 0.35s;
-}
-
-.category:last-child {
-    border-right: none;
-}
-
-.category:hover {
-    background: #141c1e;
-    transform: translateY(-5px);
-}
-
-.icon {
-    font-size: 45px;
-    color: #c49a54;
-    margin-bottom: 22px;
-}
-
-.category h3 {
-    font-family: "Cinzel", serif;
-    font-size: 17px;
-    color: #d0b47d;
-    margin-bottom: 15px;
-}
-
-.category p {
-    color: #938b7d;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-.category a {
-    color: #b38a4b;
-    text-decoration: none;
-}
-
-/* ================= ABOUT ================= */
-
-.about {
-    max-width: 1200px;
-    margin: auto;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    border: 1px solid #342a1d;
-}
-
-.about-image {
-    min-height: 430px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(160, 113, 45, 0.22),
-            transparent 45%
-        ),
-        linear-gradient(
-            135deg,
-            #1a1915,
-            #080a0b
-        );
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.about-image span {
-    font-family: "Cinzel", serif;
-    font-size: 80px;
-    color: #6c532d;
-}
-
-.about-text {
-    padding: 55px;
-    background: #0d1214;
-}
-
-.about-text h2 {
-    font-family: "Cinzel", serif;
-    font-size: 30px;
-    color: #c7a260;
-    margin-bottom: 25px;
-}
-
-.about-text p {
-    color: #aaa295;
-    font-size: 18px;
-    line-height: 1.8;
-}
-
-/* ================= PROJECTS ================= */
-
-.projects {
-    max-width: 1200px;
-    margin: auto;
-
-    display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(280px, 1fr));
-
-    gap: 25px;
-}
-
-.project {
-    min-height: 280px;
-
-    position: relative;
-    overflow: hidden;
-
-    border: 1px solid #382c1c;
-
-    background:
-        linear-gradient(
-            145deg,
-            #172023,
-            #080b0d
-        );
-
-    transition: 0.35s;
-}
-
-.project:hover {
-    transform: translateY(-7px);
-    border-color: #8f6c39;
-}
-
-.project-content {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-
-    padding: 30px;
-
-    background:
-        linear-gradient(
-            transparent,
-            rgba(4,6,7,0.97)
-        );
-}
-
-.project small {
-    color: #a98248;
-    font-family: "Cinzel", serif;
-}
-
-.project h3 {
-    font-family: "Cinzel", serif;
-    color: #ddd0b8;
-    margin-top: 7px;
-    font-size: 20px;
-}
-
-/* ================= FOOTER ================= */
-
-footer {
-    padding: 45px 6%;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    border-top: 1px solid #342a1d;
-
-    background: #050708;
-
-    color: #69645c;
-}
-
-footer span {
-    font-family: "Cinzel", serif;
-    color: #9b7742;
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 800px) {
-
-    header {
-        height: auto;
-        padding: 15px 5%;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    nav {
-        gap: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    nav a {
-        font-size: 10px;
-    }
-
-    .hero h1 {
-        font-size: 50px;
-    }
-
-    .hero p {
-        font-size: 17px;
-    }
-
-    .about {
-        grid-template-columns: 1fr;
-    }
-
-    .about-image {
-        min-height: 250px;
-    }
-
-    footer {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
+@media(max-width:700px){
+    header{height:auto;padding:10px 4%;flex-direction:column;gap:8px}
+    nav{flex-wrap:wrap;justify-content:center;gap:10px}
+    .hero{min-height:650px;height:90vh;background-position:62% top}
+    .hero-content{padding-top:140px}
+    h1{font-size:48px}
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .about{grid-template-columns:1fr}
+    .about-image{min-height:240px}
+    .projects{grid-template-columns:1fr}
+    footer{flex-direction:column;gap:12px;text-align:center}
 }
 </style>
 </head>
-
-
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header>
-
-    <div class="logo">
-        MY WORLD
-        <span>ПУТЬ. ИНТЕРЕСЫ. ПРОЕКТЫ.</span>
+  <div class="logo">
+    <div class="logo-mark">S</div>
+    <div>
+      <div class="logo-title">MY WORLD</div>
+      <div class="logo-sub">ПУТЬ. ИНТЕРЕСЫ. ПРОЕКТЫ.</div>
     </div>
-
-    <nav>
-        <a href="#home">ГЛАВНАЯ</a>
-        <a href="#about">ОБО МНЕ</a>
-        <a href="#interests">ИНТЕРЕСЫ</a>
-        <a href="#projects">ПРОЕКТЫ</a>
-        <a href="#contacts">КОНТАКТЫ</a>
-    </nav>
-
+  </div>
+  <nav>
+    <a class="active" href="#home">ГЛАВНАЯ</a>
+    <a href="#about">ОБО МНЕ</a>
+    <a href="#interests">НУМИЗМАТИКА</a>
+    <a href="#skyrim">SKYRIM</a>
+    <a href="#modeling">МОДЕЛИРОВАНИЕ</a>
+    <a href="#badminton">БАДМИНТОН</a>
+    <a href="#gallery">ГАЛЕРЕЯ</a>
+    <a href="#contacts">КОНТАКТЫ</a>
+  </nav>
 </header>
 
-
-<!-- ================= HERO ================= -->
-
+<main>
 <section class="hero" id="home">
-
-    <div class="hero-content">
-
-        <div class="small-title">
-            ДОБРО ПОЖАЛОВАТЬ
-        </div>
-
-        <h1>
-            МОЙ МИР
-        </h1>
-
-        <div class="divider"></div>
-
-        <p>
-            Здесь собраны мои увлечения, проекты и идеи.
-            Место, где интересы превращаются в истории,
-            а хобби — в маленькие миры.
-        </p>
-
-        <a href="#interests" class="button">
-            УЗНАТЬ БОЛЬШЕ
-        </a>
-
-    </div>
-
+  <div class="hero-content">
+    <div class="kicker">ДОБРО ПОЖАЛОВАТЬ</div>
+    <h1>В МОЙ МИР</h1>
+    <div class="divider"></div>
+    <p>Здесь собраны мои увлечения, проекты и идеи.<br>
+       Место, где интересы превращаются в истории,<br>
+       а хобби — в маленькие миры.</p>
+    <a class="button" href="#interests">УЗНАТЬ БОЛЬШЕ</a>
+  </div>
 </section>
-
-
-<!-- ================= INTERESTS ================= -->
 
 <section id="interests">
-
-    <div class="section-title">
-
-        <h2>МОИ ИНТЕРЕСЫ</h2>
-
-        <p>
-            То, чему я посвящаю своё свободное время
-        </p>
-
-    </div>
-
-
-    <div class="categories">
-
-        <div class="category">
-
-            <div class="icon">◈</div>
-
-            <h3>НУМИЗМАТИКА</h3>
-
-            <p>
-                Коллекционирование монет
-                разных стран и эпох.
-            </p>
-
-            <a href="#">Подробнее →</a>
-
-        </div>
-
-
-        <div class="category">
-
-            <div class="icon">♜</div>
-
-            <h3>SKYRIM</h3>
-
-            <p>
-                Любимая вселенная,
-                моды, скриншоты и проекты.
-            </p>
-
-            <a href="#">Подробнее →</a>
-
-        </div>
-
-
-        <div class="category">
-
-            <div class="icon">⌂</div>
-
-            <h3>МОДЕЛИРОВАНИЕ</h3>
-
-            <p>
-                Миниатюрные комнаты,
-                улицы и маленькие миры.
-            </p>
-
-            <a href="#">Подробнее →</a>
-
-        </div>
-
-
-        <div class="category">
-
-            <div class="icon">⚔</div>
-
-            <h3>БАДМИНТОН</h3>
-
-            <p>
-                Спорт, движение
-                и хорошее настроение.
-            </p>
-
-            <a href="#">Подробнее →</a>
-
-        </div>
-
-
-        <div class="category">
-
-            <div class="icon">◎</div>
-
-            <h3>ГАЛЕРЕЯ</h3>
-
-            <p>
-                Фотографии, моменты
-                и то, что вдохновляет.
-            </p>
-
-            <a href="#">Подробнее →</a>
-
-        </div>
-
-    </div>
-
+  <div class="section-title">
+    <h2>МОИ ИНТЕРЕСЫ</h2>
+    <p>Миры, в которые я возвращаюсь снова и снова</p>
+  </div>
+  <div class="cards">
+    <article class="card"><div class="icon">◉</div><h3>НУМИЗМАТИКА</h3><p>Коллекционирую монеты разных стран и эпох. История в металле.</p><a href="#">ПОДРОБНЕЕ →</a></article>
+    <article class="card" id="skyrim"><div class="icon">♜</div><h3>SKYRIM</h3><p>Любимая вселенная. Моды, скриншоты, прохождения и истории.</p><a href="#">ПОДРОБНЕЕ →</a></article>
+    <article class="card" id="modeling"><div class="icon">⌂</div><h3>МОДЕЛИРОВАНИЕ</h3><p>Создаю миниатюрные комнаты и улицы. Мир в масштабе.</p><a href="#">ПОДРОБНЕЕ →</a></article>
+    <article class="card" id="badminton"><div class="icon">⌁</div><h3>БАДМИНТОН</h3><p>Мой спорт, моя энергия и способ отвлечься от всего.</p><a href="#">ПОДРОБНЕЕ →</a></article>
+    <article class="card" id="gallery"><div class="icon">◎</div><h3>ГАЛЕРЕЯ</h3><p>Фотографии, моменты, вдохновение и то, что нравится.</p><a href="#">ПОДРОБНЕЕ →</a></article>
+    <article class="card" id="contacts"><div class="icon">◇</div><h3>КОНТАКТЫ</h3><p>Связаться со мной можно через социальные сети.</p><a href="mailto:example@email.com">НАПИСАТЬ →</a></article>
+  </div>
 </section>
-
-
-<!-- ================= ABOUT ================= -->
 
 <section id="about">
-
-    <div class="about">
-
-        <div class="about-image">
-            <span>✦</span>
-        </div>
-
-        <div class="about-text">
-
-            <h2>ОБО МНЕ</h2>
-
-            <p>
-                Добро пожаловать в мой небольшой уголок
-                в интернете.
-            </p>
-
-            <br>
-
-            <p>
-                Здесь я хочу собирать всё, что мне интересно:
-                игры, коллекционирование, моделирование,
-                спорт, фотографии и собственные проекты.
-            </p>
-
-            <br>
-
-            <p>
-                Этот сайт будет постепенно меняться
-                вместе со мной.
-            </p>
-
-        </div>
-
+  <div class="about">
+    <div class="about-image"></div>
+    <div class="about-text">
+      <h2>ОБО МНЕ</h2>
+      <p>Я увлекаюсь многими вещами: от древних монет до виртуальных миров, от миниатюрных улиц до спортивных побед.</p>
+      <p style="margin-top:16px">Этот сайт — мой личный дневник и коллекция всего, что вдохновляет.</p>
+      <a class="button" href="#">ЧИТАТЬ ДАЛЬШЕ</a>
     </div>
-
+  </div>
 </section>
 
-
-<!-- ================= PROJECTS ================= -->
-
-<section id="projects">
-
-    <div class="section-title">
-
-        <h2>ПОСЛЕДНИЕ ПРОЕКТЫ</h2>
-
-        <p>
-            Мои работы и эксперименты
-        </p>
-
-    </div>
-
-
-    <div class="projects">
-
-        <div class="project">
-
-            <div class="project-content">
-
-                <small>SKYRIM</small>
-
-                <h3>
-                    Новый модпак
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div class="project">
-
-            <div class="project-content">
-
-                <small>МОДЕЛИРОВАНИЕ</small>
-
-                <h3>
-                    Миниатюрная комната
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div class="project">
-
-            <div class="project-content">
-
-                <small>НУМИЗМАТИКА</small>
-
-                <h3>
-                    Коллекция монет
-                </h3>
-
-            </div>
-
-        </div>
-
-    </div>
-
+<section>
+  <div class="section-title"><h2>ПОСЛЕДНИЕ ПРОЕКТЫ</h2></div>
+  <div class="projects">
+    <article class="project"><div class="project-content"><small>SKYRIM</small><h3>Новый модпак 2025 →</h3></div></article>
+    <article class="project"><div class="project-content"><small>МОДЕЛИРОВАНИЕ</small><h3>Миниатюрная комната →</h3></div></article>
+    <article class="project"><div class="project-content"><small>НУМИЗМАТИКА</small><h3>Редкая монета →</h3></div></article>
+  </div>
 </section>
-
-
-<!-- ================= CONTACTS ================= -->
-
-<section id="contacts">
-
-    <div class="section-title">
-
-        <h2>КОНТАКТЫ</h2>
-
-        <p>
-            Здесь позже можно добавить ссылки
-            на Telegram, VK, Instagram и другие сети.
-        </p>
-
-        <a href="mailto:example@email.com" class="button">
-            НАПИСАТЬ МНЕ
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ================= FOOTER ================= -->
+</main>
 
 <footer>
-
-    <div>
-        © 2026 <span>MY WORLD</span>
-    </div>
-
-    <div>
-        «Дорогу осилит идущий»
-    </div>
-
+  <div>© 2026 <strong>MY WORLD</strong><br>Все права защищены.</div>
+  <div>VK　✈　▶　◎</div>
+  <div>«Дорогу осилит идущий»</div>
 </footer>
-
-
 </body>
 </html>
